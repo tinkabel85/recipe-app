@@ -1,0 +1,25 @@
+.Category {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 2rem auto;
+  width: 50%;
+  gap: 2em;
+
+  &__type {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+
+    h4 {
+      margin: 0;
+      font-size: 0.8em;
+    }
+    svg {
+      font-size: 1.5em;
+      align-self: center;
+    }
+  }
+}
