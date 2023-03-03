@@ -3,10 +3,10 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { useEffect, useState } from "react";
 import Recipe from "../Recipe/Recipe";
 import "./RecipesList.scss";
+import { NavLink } from "react-router-dom";
 
 function RecipesList() {
   const [recipes, setRecipes] = useState<any[]>([]);
-  const [query, setQuery] = useState("chicken");
 
   useEffect(() => {
     getPopular();
@@ -33,7 +33,6 @@ function RecipesList() {
       <Splide
         options={{
           perPage: 3,
-          type: "loop",
           pagination: false,
           drag: "free",
           gap: "5rem",
@@ -41,8 +40,10 @@ function RecipesList() {
         }}
       >
         {recipes.map((recipe) => (
-          <SplideSlide >
-            <Recipe key={recipe.id} recipe={recipe} />
+          <SplideSlide>
+            <NavLink to= {'/recipe/'+ recipe.id}>
+              <Recipe key={recipe.id} recipe={recipe} />
+            </NavLink>
           </SplideSlide>
         ))}
       </Splide>

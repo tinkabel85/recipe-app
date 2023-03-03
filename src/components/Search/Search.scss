@@ -1,0 +1,19 @@
+.Search {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__input {
+    outline: none;
+    border-radius: 1rem;
+    padding: .8rem 3rem;
+    font-size: 1.3rem;
+    border: 1px solid var(--text-light);
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(100%, -50%);
+  }
+}
