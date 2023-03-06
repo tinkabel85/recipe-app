@@ -1,9 +1,9 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Recipe from "../Recipe/Recipe";
 import "./RecipesList.scss";
-import { NavLink } from "react-router-dom";
 
 function RecipesList() {
   const [recipes, setRecipes] = useState<any[]>([]);
@@ -28,6 +28,7 @@ function RecipesList() {
     }
   };
 
+
   return (
     <div className="RecipesList">
       <Splide
@@ -35,12 +36,12 @@ function RecipesList() {
           perPage: 3,
           pagination: false,
           drag: "free",
-          gap: "5rem",
+          gap: "4rem",
           width: "100%",
         }}
       >
         {recipes.map((recipe) => (
-          <SplideSlide>
+          <SplideSlide key={recipe.id}>
             <NavLink to= {'/recipe/'+ recipe.id}>
               <Recipe key={recipe.id} recipe={recipe} />
             </NavLink>

@@ -1,12 +1,12 @@
 import React from 'react';
 import Homepage from './Home';
-import Cuisine from './Cuisine';
-import Search from './SearchPage';
-import Recipe from './RecipeDetails';
+import Cuisine from './Cuisine/Cuisine';
+import Search from './SearchPage/SearchPage';
+import Recipe from './RecipeDetails/RecipeDetails';
 import { Route, Routes as RouterRoutes } from "react-router-dom";
 
 
-function Pages() {
+function Routes() {
   return (
     <RouterRoutes>
       <Route path="/" element={<Homepage />} />
@@ -17,4 +17,4 @@ function Pages() {
   );
 }
 
-export default Pages
+export default Routes;

@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.scss';
-import Pages from './pages/Pages';
-import Category from './components/Category/Category';
-import Search from './components/Search/Search';
 import { NavLink } from "react-router-dom";
+import Routes from '../../pages/Routes';
+import Category from '../Category/Category';
+import Search from '../Search/Search';
+import './App.scss';
 
 
 type AppProps = {
@@ -19,7 +19,7 @@ function App(props: AppProps) {
       </NavLink>
       <Search />
       <Category />
-      <Pages />
+      <Routes />
     </div>
   );
 }

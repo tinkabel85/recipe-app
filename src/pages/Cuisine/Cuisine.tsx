@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Recipe from "../components/Recipe/Recipe";
+import Recipe from "../../components/Recipe/Recipe";
 import "./Cuisine.scss";
 
 function Cuisine() {

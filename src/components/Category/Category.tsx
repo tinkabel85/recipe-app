@@ -1,5 +1,5 @@
-import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles} from "react-icons/gi";
+import { FaHamburger, FaPizzaSlice } from "react-icons/fa";
+import { GiNoodles } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import "./Category.scss";
 

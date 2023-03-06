@@ -1,5 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Recipe.scss";
+
 type RecipeProps = {
   recipe: {
     id: number;
@@ -10,6 +12,7 @@ type RecipeProps = {
   };
 };
 
+
 function Recipe({ recipe }: RecipeProps) {
   return (
     <div className="Recipe">
@@ -19,10 +22,12 @@ function Recipe({ recipe }: RecipeProps) {
       <div className="Recipe__info">
         <p className="Recipe__info__title">{recipe.title}</p>
         {/* <div className="Recipe__info__time">{recipe.readyInMinutes}</div> */}
-        <div
+        {/* <div
           className="Recipe__info__text"
           dangerouslySetInnerHTML={{ __html: recipe.instructions}}
-        ></div>
+        ></div> */}
+        <NavLink to= {`/recipe/${recipe.id}`}
+        >Read more...</NavLink>
       </div>
       <div></div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Recipe from "../components/Recipe/Recipe";
+import Recipe from "../../components/Recipe/Recipe";
 import './SearchPage.scss'
 
 function SearchPage() {
