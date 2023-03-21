@@ -1,33 +1,38 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { NavLink } from "react-router-dom";
+import Actions from "../../state/Actions";
+import initialState from "../../state/models/initialState";
+import stateReducer from "../../state/reducer/stateReducer";
 import Recipe from "../Recipe/Recipe";
 import "./RecipesList.scss";
 
 function RecipesList() {
-  const [recipes, setRecipes] = useState<any[]>([]);
+  const [state, dispatch] = useReducer(stateReducer, initialState)
 
   useEffect(() => {
-    getPopular();
-  }, []);
-
-  const getPopular = async () => {
+    dispatch({ type: Actions.getRecipes });
     const check = localStorage.getItem("recipes");
-
+    
     if (check) {
-      setRecipes(JSON.parse(check));
+      dispatch({
+        type: Actions.setRecipes,
+        payload: JSON.parse(check)
+      })
     } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=25`
-      );
-      const data = await api.json();
-      localStorage.setItem("recipes", JSON.stringify(data.recipes));
-      console.log(data.recipes);
-      setRecipes(data.recipes);
+      (async () => {
+        const api = await fetch(
+          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=25`
+        );
+        const data = await api.json();
+        localStorage.setItem("recipes", JSON.stringify(data.recipes));
+        console.log(data.recipes);
+        dispatch({ type: Actions.setRecipes, payload: data.recipes });
+      })();
     }
-  };
-
+  }, []);
+  const { recipes } = state;
 
   return (
     <div className="RecipesList">
@@ -40,9 +45,9 @@ function RecipesList() {
           width: "100%",
         }}
       >
-        {recipes.map((recipe) => (
+        {recipes.map((recipe: any) => (
           <SplideSlide key={recipe.id}>
-            <NavLink to= {'/recipe/'+ recipe.id}>
+            <NavLink to={`/recipe/${recipe.id}`}>
               <Recipe key={recipe.id} recipe={recipe} />
             </NavLink>
           </SplideSlide>
